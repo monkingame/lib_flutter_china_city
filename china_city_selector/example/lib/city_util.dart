@@ -5,7 +5,7 @@ abstract class CityUtil {
 
   static void analyze() {
     for (var code in chinaCities.keys) {
-      // print(code);
+      print(code);
     }
   }
 }
