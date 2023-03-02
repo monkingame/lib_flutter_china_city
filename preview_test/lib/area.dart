@@ -12,28 +12,31 @@ abstract class Area {
 
   void add(Area child) => children.add(child);
 
-  void sort() => children.sort(((a, b) => a.code.compareTo(b.code)));
+  void sort() => children.sort(((a, b) => a.codeValue.compareTo(b.codeValue)));
 
-  @Deprecated('用静态函数isNationCode')
-  bool get isNation => codeValue == 0;
+  // @Deprecated('用静态函数isNationCode')
+  // bool get isNation => codeValue == 0;
+  // bool get isProvince => codeValue % 10000 == 0;
+  // bool get isCity => !isProvince && (codeValue % 100 == 0);
+  // bool get isCounty => codeValue % 100 != 0;
 
-  bool get isProvince => codeValue % 10000 == 0;
-
-  bool get isCity => !isProvince && (codeValue % 100 == 0);
-
-  bool get isCounty => codeValue % 100 != 0;
-
-  static bool isNationCode(int code) => code == 0;
-  static bool isProvinceCode(int code) => code % 10000 == 0;
-  static bool isCityCode(int code) =>
-      !isProvinceCode(code) && (code % 100 == 0);
-  static bool isCountyCode(int code) => code % 100 != 0;
+  static bool isNationCode(int value) => value == 0;
+  static bool isProvinceCode(int value) => value % 10000 == 0;
+  static bool isCityCode(int value) =>
+      !isProvinceCode(value) && (value % 100 == 0);
+  static bool isCountyCode(int value) => value % 100 != 0;
 
   int get getParentCodeValue {
-    if (isNation) return 0;
-    if (isProvince) return 0;
-    if (isCity) return ((codeValue / 10000) as int) * 10000;
-    if (isCounty) return ((codeValue / 100) as int) * 100;
+    // if (isNation) return 0;
+    // if (isProvince) return 0;
+    // if (isCity) return ((codeValue / 10000) as int) * 10000;
+    // if (isCounty) return ((codeValue / 100) as int) * 100;
+
+    if (isNationCode(codeValue)) return 0;
+    if (isProvinceCode(codeValue)) return 0;
+    if (isCityCode(codeValue)) return ((codeValue / 10000) as int) * 10000;
+    if (isCountyCode(codeValue)) return ((codeValue / 100) as int) * 100;
+
     return 0;
   }
 

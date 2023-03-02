@@ -1,4 +1,4 @@
-const Map<String, String> chinaCities = {
+const Map<String, String> mapChinaCities = {
   '110000': '北京市',
   '110101': '东城区',
   '110102': '西城区',
