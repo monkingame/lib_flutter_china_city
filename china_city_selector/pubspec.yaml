@@ -1,7 +1,7 @@
 name: china_city_selector
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: china city selector
+version: 1.0.0
+homepage: https://github.com/monkingame/lib_flutter_china_city
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
