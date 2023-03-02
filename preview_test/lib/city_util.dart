@@ -37,7 +37,11 @@ abstract class CityUtil {
     }
 
     for (Area city in allCities.values) {
-      final parentCode = city.parentCodeValue;
+      final provinceCode = city.parentCode;
+      final province = allProvinces[provinceCode];
+      if (province == null) continue;
+      city.parent = province;
+      province.add(city);
     }
 
     print('done');

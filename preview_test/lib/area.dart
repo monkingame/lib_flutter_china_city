@@ -3,6 +3,7 @@ abstract class Area {
   final String code;
   final String name;
 
+  // TODO: 一传参就获值 并判断类型，避免动态计算，并且判断数据格式正确性
   Area({required this.code, required this.name});
 
   int get codeValue => int.parse(code);
