@@ -38,19 +38,24 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: OutlinedButton(
-          onPressed: () async {
-            final content =
-                await rootBundle.loadString('assets/202012-china-cities.txt');
-            // print(file);
-            final lines = const LineSplitter().convert(content);
-            for (String line in lines) {
-              // print(line);
-            }
-            print(lines.length);
-          },
+          onPressed: _loadAssetFile,
           child: const Text('test'),
         ),
       ),
     );
+  }
+
+  void _loadAssetFile() async {
+    final content =
+        await rootBundle.loadString('assets/202012-china-cities.txt');
+    // print(file);
+    final lines = const LineSplitter().convert(content);
+    // print(lines.length);
+    for (String line in lines) {
+      // print(line);
+      final pure = line.trim();
+      if (pure.isEmpty) continue;
+      final items = pure.split(RegExp('source'));
+    }
   }
 }
