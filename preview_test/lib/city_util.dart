@@ -1,5 +1,4 @@
-import 'package:preview_test/area.dart';
-
+import 'area.dart';
 import 'map_china_cities.dart';
 
 abstract class CityUtil {
@@ -8,6 +7,7 @@ abstract class CityUtil {
   static void analyze() {
     final nation = Nation();
     // final List<Area> allAreas = [];
+    final Map<String, Area> allProvinces = {};
     final Map<String, Area> allCities = {};
     final Map<String, Area> allCounties = {};
 
@@ -23,6 +23,7 @@ abstract class CityUtil {
       if (Area.isProvinceCode(codeValue)) {
         area = Province(code: code, name: name);
         nation.add(area);
+        allProvinces[code] = area;
       } else if (Area.isCityCode(codeValue)) {
         area = City(code: code, name: name);
         allCities[code] = area;
@@ -33,6 +34,10 @@ abstract class CityUtil {
         continue;
       }
       // allAreas.add(area);
+    }
+
+    for (Area city in allCities.values) {
+      final parentCode = city.parentCodeValue;
     }
 
     print('done');

@@ -26,7 +26,7 @@ abstract class Area {
       !isProvinceCode(value) && (value % 100 == 0);
   static bool isCountyCode(int value) => value % 100 != 0;
 
-  int get getParentCodeValue {
+  int get parentCodeValue {
     // if (isNation) return 0;
     // if (isProvince) return 0;
     // if (isCity) return ((codeValue / 10000) as int) * 10000;
@@ -34,11 +34,13 @@ abstract class Area {
 
     if (isNationCode(codeValue)) return 0;
     if (isProvinceCode(codeValue)) return 0;
-    if (isCityCode(codeValue)) return ((codeValue / 10000) as int) * 10000;
-    if (isCountyCode(codeValue)) return ((codeValue / 100) as int) * 100;
+    if (isCityCode(codeValue)) return (codeValue ~/ 10000) * 10000;
+    if (isCountyCode(codeValue)) return (codeValue ~/ 100) * 100;
 
     return 0;
   }
+
+  String get parentCode => parentCodeValue.toString().padRight(6, '0');
 
   Area? parent;
 }
