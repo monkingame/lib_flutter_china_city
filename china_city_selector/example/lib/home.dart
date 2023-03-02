@@ -1,3 +1,4 @@
+import 'package:china_city_selector/china_cities.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -14,7 +15,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: const Text('china cities')),
       body: Center(
         child: OutlinedButton(
-          onPressed: () async {},
+          onPressed: () async {
+            // print(chinaCities);
+          },
           child: const Text('test'),
         ),
       ),
