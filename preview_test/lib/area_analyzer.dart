@@ -1,5 +1,5 @@
 import 'area.dart';
-import 'map_china_cities.dart';
+import 'map_china_areas.dart';
 
 abstract class AreaAnalyzer {
   AreaAnalyzer._();
@@ -11,11 +11,11 @@ abstract class AreaAnalyzer {
     final Map<String, Area> allCities = {};
     final Map<String, Area> allCounties = {};
 
-    for (var code in mapChinaCities.keys) {
+    for (var code in mapChinaAreas.keys) {
       // print(code);
       if (code.length != 6) continue;
       if (int.tryParse(code) == null) continue;
-      final name = mapChinaCities[code];
+      final name = mapChinaAreas[code];
       if (name == null) continue;
 
       Area area;
