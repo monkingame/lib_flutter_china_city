@@ -27,6 +27,6 @@ class Province {
 }
 
 /// 全国
-class WholeNation {
+class Nation {
   final List<Province> provinces = [];
 }
