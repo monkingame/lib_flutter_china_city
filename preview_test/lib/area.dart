@@ -22,6 +22,12 @@ abstract class Area {
 
   bool get isCounty => codeValue % 100 != 0;
 
+  static bool isNationCode(int code) => code == 0;
+  static bool isProvinceCode(int code) => code % 10000 == 0;
+  static bool isCityCode(int code) =>
+      !isProvinceCode(code) && (code % 100 == 0);
+  static bool isCountyCode(int code) => code % 100 != 0;
+
   int get getParentCodeValue {
     if (isNation) return 0;
     if (isProvince) return 0;
