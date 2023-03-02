@@ -1,3 +1,5 @@
+@Deprecated('作废')
+
 /// 县
 class County {
   County({required this.code, required this.name});
@@ -5,6 +7,8 @@ class County {
   final String code;
   final String name;
 }
+
+@Deprecated('作废')
 
 /// 市
 class City {
@@ -16,6 +20,8 @@ class City {
   final List<County> counties = [];
 }
 
+@Deprecated('作废')
+
 /// 省
 class Province {
   Province({required this.code, required this.name});
@@ -25,6 +31,8 @@ class Province {
 
   final List<City> cities = [];
 }
+
+@Deprecated('作废')
 
 /// 全国
 class Nation {

@@ -10,7 +10,17 @@ abstract class Area {
   // abstract List<Area> children;
   final List<Area> children = [];
 
+  void add(Area child) => children.add(child);
+
+  void sort() => children.sort(((a, b) => a.code.compareTo(b.code)));
+
   // Area? get parent;
+
+  bool get isProvince => codeValue % 10000 == 0;
+
+  bool get isCity => !isProvince && (codeValue % 100 == 0);
+
+  bool get isCounty => codeValue % 100 != 0;
 }
 
 class Nation extends Area {
