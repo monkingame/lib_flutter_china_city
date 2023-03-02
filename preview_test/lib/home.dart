@@ -19,6 +19,8 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () async {
             // print(chinaCities);
             final nation = AreaAnalyzer.analyzeNation();
+            print(nation);
+            // print(nation.children);
           },
           child: const Text('test'),
         ),

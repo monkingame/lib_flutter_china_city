@@ -69,6 +69,15 @@ abstract class Area {
   String get parentCode => parentValue.toString().padRight(6, '0');
 
   Area? parent;
+
+  @override
+  String toString() {
+    if (children.isNotEmpty) {
+      return '$code:$name $children';
+    } else {
+      return '$code:$name';
+    }
+  }
 }
 
 enum _AreaType { nation, province, city, county }
