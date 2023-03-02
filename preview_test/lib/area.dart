@@ -21,14 +21,14 @@ abstract class Area {
   }
 
   // int get codeValue => int.parse(code);
-  int get codeValue => _value;
+  int get value => _value;
 
   // abstract List<Area> children;
   final List<Area> children = [];
 
   void add(Area child) => children.add(child);
 
-  void sort() => children.sort(((a, b) => a.codeValue.compareTo(b.codeValue)));
+  void sort() => children.sort(((a, b) => a.value.compareTo(b.value)));
 
   // @Deprecated('用静态函数isNationCode')
   // bool get isNation => codeValue == 0;
@@ -47,7 +47,7 @@ abstract class Area {
   bool get isCity => _type == _AreaType.city;
   bool get isCounty => _type == _AreaType.county;
 
-  int get parentCodeValue {
+  int get parentValue {
     // if (isNation) return 0;
     // if (isProvince) return 0;
     // if (isCity) return ((codeValue / 10000) as int) * 10000;
@@ -60,13 +60,13 @@ abstract class Area {
 
     if (isNation) return 0;
     if (isProvince) return 0;
-    if (isCity) return (codeValue ~/ 10000) * 10000;
-    if (isCounty) return (codeValue ~/ 100) * 100;
+    if (isCity) return (value ~/ 10000) * 10000;
+    if (isCounty) return (value ~/ 100) * 100;
 
     return 0;
   }
 
-  String get parentCode => parentCodeValue.toString().padRight(6, '0');
+  String get parentCode => parentValue.toString().padRight(6, '0');
 
   Area? parent;
 }

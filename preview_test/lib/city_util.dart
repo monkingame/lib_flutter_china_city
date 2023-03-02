@@ -22,7 +22,8 @@ abstract class CityUtil {
       final codeValue = int.parse(code);
       if (Area.isProvinceCode(codeValue)) {
         area = Province(code: code, name: name);
-        nation.add(area);
+        // area.parent = nation;
+        // nation.add(area);
         allProvinces[code] = area;
       } else if (Area.isCityCode(codeValue)) {
         area = City(code: code, name: name);
@@ -36,13 +37,30 @@ abstract class CityUtil {
       // allAreas.add(area);
     }
 
+    for (Area county in allCounties.values) {
+      final cityCode = county.parentCode;
+      final city = allCities[cityCode];
+      if (city == null) continue;
+      county.parent = city;
+      city.add(county);
+    }
+
     for (Area city in allCities.values) {
       final provinceCode = city.parentCode;
       final province = allProvinces[provinceCode];
       if (province == null) continue;
       city.parent = province;
+      city.sort();
       province.add(city);
     }
+
+    for (Area province in allProvinces.values) {
+      province.parent = nation;
+      province.sort();
+      nation.add(province);
+    }
+
+    nation.sort();
 
     print('done');
   }
