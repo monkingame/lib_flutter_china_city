@@ -1,6 +1,6 @@
 import 'package:preview_test/area.dart';
 
-import 'china_cities.dart';
+import 'map_china_cities.dart';
 
 abstract class CityUtil {
   CityUtil._();
