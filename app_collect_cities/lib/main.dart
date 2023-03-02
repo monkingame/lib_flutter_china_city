@@ -55,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // print(line);
       final pure = line.trim();
       if (pure.isEmpty) continue;
-      final items = pure.split(RegExp('source'));
+      final items = pure.split(RegExp('\\s+'));
+      print(items);
     }
   }
 }
