@@ -50,13 +50,22 @@ class _MyHomePageState extends State<MyHomePage> {
         await rootBundle.loadString('assets/202012-china-cities.txt');
     // print(file);
     final lines = const LineSplitter().convert(content);
-    // print(lines.length);
+    print(lines.length);
+    final Map<String, String> maps = {};
+
     for (String line in lines) {
       // print(line);
       final pure = line.trim();
       if (pure.isEmpty) continue;
       final items = pure.split(RegExp('\\s+'));
-      print(items);
+      // print(items);
+      if (items.length != 2) {
+        // print(items); 西沙区 南沙区
+        continue;
+      }
+      maps[items[0].trim()] = items[1].trim();
     }
+
+    print(maps.length);
   }
 }
