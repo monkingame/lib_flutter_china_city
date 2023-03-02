@@ -14,6 +14,7 @@ abstract class Area {
 
   void sort() => children.sort(((a, b) => a.code.compareTo(b.code)));
 
+  @Deprecated('用静态函数isNationCode')
   bool get isNation => codeValue == 0;
 
   bool get isProvince => codeValue % 10000 == 0;
