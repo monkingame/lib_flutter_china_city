@@ -1,12 +1,12 @@
 import 'area.dart';
 import 'map_china_cities.dart';
 
-abstract class CityUtil {
-  CityUtil._();
+abstract class AreaAnalyzer {
+  AreaAnalyzer._();
 
-  static void analyze() {
+  static Nation analyzeNation() {
     final nation = Nation();
-    // final List<Area> allAreas = [];
+    final Map<String, Area> allAreas = {};
     final Map<String, Area> allProvinces = {};
     final Map<String, Area> allCities = {};
     final Map<String, Area> allCounties = {};
@@ -34,7 +34,8 @@ abstract class CityUtil {
       } else {
         continue;
       }
-      // allAreas.add(area);
+
+      allAreas[code] = area;
     }
 
     for (Area county in allCounties.values) {
@@ -62,6 +63,12 @@ abstract class CityUtil {
 
     nation.sort();
 
-    print('done');
+    nation.allAreas = allAreas;
+    nation.allProvinces = allProvinces;
+    nation.allCities = allCities;
+    nation.allCounties = allCounties;
+
+    // print('done');
+    return nation;
   }
 }

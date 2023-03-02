@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'city_util.dart';
+import 'area_analyzer.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: OutlinedButton(
           onPressed: () async {
             // print(chinaCities);
-            CityUtil.analyze();
+            final nation = AreaAnalyzer.analyzeNation();
           },
           child: const Text('test'),
         ),

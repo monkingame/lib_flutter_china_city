@@ -75,6 +75,11 @@ enum _AreaType { nation, province, city, county }
 
 class Nation extends Area {
   Nation() : super(code: '000000', name: '全国');
+
+  late final Map<String, Area> allAreas;
+  late final Map<String, Area> allProvinces;
+  late final Map<String, Area> allCities;
+  late final Map<String, Area> allCounties;
 }
 
 class Province extends Area {
