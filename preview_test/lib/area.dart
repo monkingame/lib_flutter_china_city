@@ -3,10 +3,25 @@ abstract class Area {
   final String code;
   final String name;
 
-  // TODO: 一传参就获值 并判断类型，避免动态计算，并且判断数据格式正确性
-  Area({required this.code, required this.name});
+  int _value = 0;
+  _AreaType _type = _AreaType.nation;
 
-  int get codeValue => int.parse(code);
+  Area({required this.code, required this.name}) {
+    if (code.length == 6) {
+      final v = int.tryParse(code);
+      if (v != null) {
+        _value = v;
+
+        if (isNationCode(v)) _type = _AreaType.nation;
+        if (isProvinceCode(v)) _type = _AreaType.province;
+        if (isCityCode(v)) _type = _AreaType.city;
+        if (isCountyCode(v)) _type = _AreaType.county;
+      }
+    }
+  }
+
+  // int get codeValue => int.parse(code);
+  int get codeValue => _value;
 
   // abstract List<Area> children;
   final List<Area> children = [];
@@ -27,16 +42,26 @@ abstract class Area {
       !isProvinceCode(value) && (value % 100 == 0);
   static bool isCountyCode(int value) => value % 100 != 0;
 
+  bool get isNation => _type == _AreaType.nation;
+  bool get isProvince => _type == _AreaType.province;
+  bool get isCity => _type == _AreaType.city;
+  bool get isCounty => _type == _AreaType.county;
+
   int get parentCodeValue {
     // if (isNation) return 0;
     // if (isProvince) return 0;
     // if (isCity) return ((codeValue / 10000) as int) * 10000;
     // if (isCounty) return ((codeValue / 100) as int) * 100;
 
-    if (isNationCode(codeValue)) return 0;
-    if (isProvinceCode(codeValue)) return 0;
-    if (isCityCode(codeValue)) return (codeValue ~/ 10000) * 10000;
-    if (isCountyCode(codeValue)) return (codeValue ~/ 100) * 100;
+    // if (isNationCode(codeValue)) return 0;
+    // if (isProvinceCode(codeValue)) return 0;
+    // if (isCityCode(codeValue)) return (codeValue ~/ 10000) * 10000;
+    // if (isCountyCode(codeValue)) return (codeValue ~/ 100) * 100;
+
+    if (isNation) return 0;
+    if (isProvince) return 0;
+    if (isCity) return (codeValue ~/ 10000) * 10000;
+    if (isCounty) return (codeValue ~/ 100) * 100;
 
     return 0;
   }
@@ -45,6 +70,8 @@ abstract class Area {
 
   Area? parent;
 }
+
+enum _AreaType { nation, province, city, county }
 
 class Nation extends Area {
   Nation() : super(code: '000000', name: '全国');
