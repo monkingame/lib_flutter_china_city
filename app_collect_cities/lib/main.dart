@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -50,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         await rootBundle.loadString('assets/202012-china-cities.txt');
     // print(file);
     final lines = const LineSplitter().convert(content);
-    print(lines.length);
+    // print(lines.length);
     final Map<String, String> maps = {};
 
     for (String line in lines) {
@@ -66,6 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
       maps[items[0].trim()] = items[1].trim();
     }
 
-    print(maps.length);
+    // print(maps.length);
+    final varMaps =
+        maps.map((key, value) => MapEntry('\'$key\'', '\'$value\''));
+    // print(varMaps.length);
+
+    // 现在打印出来的就是整个map 可以作为变量使用
+    print(varMaps);
   }
 }
