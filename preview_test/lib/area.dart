@@ -14,13 +14,23 @@ abstract class Area {
 
   void sort() => children.sort(((a, b) => a.code.compareTo(b.code)));
 
-  // Area? get parent;
+  bool get isNation => codeValue == 0;
 
   bool get isProvince => codeValue % 10000 == 0;
 
   bool get isCity => !isProvince && (codeValue % 100 == 0);
 
   bool get isCounty => codeValue % 100 != 0;
+
+  int get getParentCodeValue {
+    if (isNation) return 0;
+    if (isProvince) return 0;
+    if (isCity) return ((codeValue / 10000) as int) * 10000;
+    if (isCounty) return ((codeValue / 100) as int) * 100;
+    return 0;
+  }
+
+  Area? parent;
 }
 
 class Nation extends Area {
