@@ -33,10 +33,13 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('test'),
             ),
           ),
-          SelectorArea(
-            onNewArea: (AreaResult newArea) async {
-              print(newArea);
-            },
+          SizedBox(
+            width: 600,
+            child: SelectorArea(
+              onNewArea: (AreaResult newArea) async {
+                print(newArea);
+              },
+            ),
           ),
         ],
       ),

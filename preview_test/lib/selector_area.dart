@@ -47,9 +47,9 @@ class _SelectorAreaState extends State<SelectorArea> {
     final row = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildProvince(),
-        _buildCity(),
-        _buildCounty(),
+        Expanded(child: _buildProvince()),
+        Expanded(child: _buildCity()),
+        Expanded(child: _buildCounty()),
       ],
     );
     return row;
@@ -158,8 +158,6 @@ class _SelectorAreaState extends State<SelectorArea> {
       county: nation.findCounty(_provinceName, _cityName, _countyName),
     );
 
-    print(selected);
-
-    // onChange(selected);
+    onChange(selected);
   }
 }
