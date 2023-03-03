@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'area_analyzer.dart';
+import 'selector_area.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -14,19 +15,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('china cities')),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () async {
-            // print(chinaCities);
-            final nation = AreaAnalyzer.analyzeNation();
-            // print(nation);
-            // print(nation.children);
-            final provinces = nation.allProvinces.values.toList();
-            provinces.sort((a, b) => a.value.compareTo(b.value));
-            print(provinces);
-          },
-          child: const Text('test'),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Center(
+            child: OutlinedButton(
+              onPressed: () async {
+                // print(chinaCities);
+                final nation = AreaAnalyzer.analyzeNation();
+                // print(nation);
+                // print(nation.children);
+                final provinces = nation.allProvinces.values.toList();
+                provinces.sort((a, b) => a.value.compareTo(b.value));
+                print(provinces);
+              },
+              child: const Text('test'),
+            ),
+          ),
+          SelectorArea(),
+        ],
       ),
     );
   }

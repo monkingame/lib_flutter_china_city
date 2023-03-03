@@ -1,30 +1,79 @@
 import 'package:flutter/material.dart';
 
+import 'area_analyzer.dart';
+
 typedef OnNewStatus = void Function(String? newString);
 
 /// 行业类型
-class SelectorIndustry extends StatefulWidget {
+class SelectorArea extends StatefulWidget {
   final String? initString;
   final OnNewStatus? onNewString;
 
-  const SelectorIndustry({super.key, this.initString, this.onNewString});
+  const SelectorArea({super.key, this.initString, this.onNewString});
 
   @override
-  State<SelectorIndustry> createState() => _SelectorIndustryState();
+  State<SelectorArea> createState() => _SelectorAreaState();
 }
 
-class _SelectorIndustryState extends State<SelectorIndustry> {
+class _SelectorAreaState extends State<SelectorArea> {
+  final nation = AreaAnalyzer.analyzeNation();
+
+  List<String> _provinces = [];
+  List<String> _cities = [];
+  List<String> _counties = [];
+
   String? _industry;
+  String? _currProvince;
+  String? _currCity;
+  String? _currCounty;
 
   List<String?> get _industryValues => [null, ..._industries];
+
+  List<String?> get _provinceValues => [null, ..._provinces];
+  List<String?> get _cityValues => [null, ..._cities];
+  List<String?> get _countyValues => [null, ..._counties];
 
   Text _getText(String? s) => (s == null) ? const Text('请选择') : Text(s);
 
   @override
   Widget build(BuildContext context) {
+    // final dropdown = DropdownButton<String>(
+    //   value: _industry,
+    //   items: _industryValues
+    //       .map<DropdownMenuItem<String>>(
+    //         (value) => DropdownMenuItem<String>(
+    //           value: value,
+    //           child: _getText(value),
+    //         ),
+    //       )
+    //       .toList(),
+    //   onChanged: (value) async {
+    //     setState(() {
+    //       _industry = value;
+    //     });
+
+    //     final onChange = widget.onNewString;
+    //     if (onChange != null) onChange(value);
+    //   },
+    // );
+
+    // return DropdownButtonHideUnderline(child: dropdown);
+
+    final row = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildProvince(),
+        _buildCity(),
+        _buildCounty(),
+      ],
+    );
+    return row;
+  }
+
+  Widget _buildProvince() {
     final dropdown = DropdownButton<String>(
-      value: _industry,
-      items: _industryValues
+      value: _currProvince,
+      items: _provinceValues
           .map<DropdownMenuItem<String>>(
             (value) => DropdownMenuItem<String>(
               value: value,
@@ -34,11 +83,59 @@ class _SelectorIndustryState extends State<SelectorIndustry> {
           .toList(),
       onChanged: (value) async {
         setState(() {
-          _industry = value;
+          _currProvince = value;
         });
 
-        final onChange = widget.onNewString;
-        if (onChange != null) onChange(value);
+        // final onChange = widget.onNewString;
+        // if (onChange != null) onChange(value);
+      },
+    );
+
+    return DropdownButtonHideUnderline(child: dropdown);
+  }
+
+  Widget _buildCity() {
+    final dropdown = DropdownButton<String>(
+      value: _currCity,
+      items: _cityValues
+          .map<DropdownMenuItem<String>>(
+            (value) => DropdownMenuItem<String>(
+              value: value,
+              child: _getText(value),
+            ),
+          )
+          .toList(),
+      onChanged: (value) async {
+        setState(() {
+          _currCity = value;
+        });
+
+        // final onChange = widget.onNewString;
+        // if (onChange != null) onChange(value);
+      },
+    );
+
+    return DropdownButtonHideUnderline(child: dropdown);
+  }
+
+  Widget _buildCounty() {
+    final dropdown = DropdownButton<String>(
+      value: _currCounty,
+      items: _countyValues
+          .map<DropdownMenuItem<String>>(
+            (value) => DropdownMenuItem<String>(
+              value: value,
+              child: _getText(value),
+            ),
+          )
+          .toList(),
+      onChanged: (value) async {
+        setState(() {
+          _currCounty = value;
+        });
+
+        // final onChange = widget.onNewString;
+        // if (onChange != null) onChange(value);
       },
     );
 
