@@ -39,7 +39,7 @@ class _SelectorAreaState extends State<SelectorArea> {
   void initState() {
     final provinces = nation.allProvinces.values.toList();
     provinces.sort((a, b) => a.value.compareTo(b.value));
-    _provinceNames = provinces.map((e) => e.name).toList();
+    _provinceNames = provinces.map((p) => p.name).toList();
 
     super.initState();
   }
@@ -70,9 +70,21 @@ class _SelectorAreaState extends State<SelectorArea> {
           .toList(),
       onChanged: (value) async {
         setState(() {
+          _cityName = null;
+          _countyName = null;
+          _cityNames = [];
+          _countyNames = [];
+
           _provinceName = value;
 
           if (_provinceName != null) {
+            // print(_provinceName);
+            // final province = nation.allProvinces[_provinceName];
+            final province = nation.findByName(_provinceName);
+            if (province != null) {
+              final cities = province.children;
+              _cityNames = cities.map((c) => c.name).toList();
+            }
           } else {
             _cityName = null;
             _countyName = null;
@@ -80,6 +92,8 @@ class _SelectorAreaState extends State<SelectorArea> {
             _countyNames = [];
           }
         });
+
+        // print(_cityNames);
 
         // final onChange = widget.onNewString;
         // if (onChange != null) onChange(value);

@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 /// 地区类
 abstract class Area {
   final String code;
@@ -91,6 +93,11 @@ class Nation extends Area {
   late final Map<String, Area> allProvinces;
   late final Map<String, Area> allCities;
   late final Map<String, Area> allCounties;
+
+  Area? findByName(String? name) {
+    final area = allAreas.values.firstWhereOrNull((a) => a.name == name);
+    return area;
+  }
 }
 
 class Province extends Area {
