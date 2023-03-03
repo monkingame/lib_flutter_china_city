@@ -6,4 +6,7 @@ class AreaSelected {
   final Area? county;
 
   AreaSelected({this.province, this.city, this.county});
+
+  @override
+  String toString() => '$province - $city - $county';
 }

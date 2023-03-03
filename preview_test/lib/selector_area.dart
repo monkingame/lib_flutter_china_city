@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'area_analyzer.dart';
 import 'area_selected.dart';
 
-typedef OnNewArea = void Function(AreaSelected newString);
+typedef OnNewArea = void Function(AreaSelected newArea);
 
 /// 行业类型
 class SelectorArea extends StatefulWidget {
@@ -158,6 +158,8 @@ class _SelectorAreaState extends State<SelectorArea> {
       county: nation.findCounty(_provinceName, _cityName, _countyName),
     );
 
-    onChange(selected);
+    print(selected);
+
+    // onChange(selected);
   }
 }

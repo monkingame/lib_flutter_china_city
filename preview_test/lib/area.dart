@@ -99,16 +99,17 @@ class Nation extends Area {
     return area;
   }
 
-  Province? findProvince(String? name) {
-    final p = children.firstWhereOrNull((a) => a.name == name);
-    return p as Province;
+  Province? findProvince(String? nameProvince) {
+    final p = children.firstWhereOrNull((a) => a.name == nameProvince);
+    return (p == null) ? null : (p as Province);
   }
 
   City? findCity(String? nameProvince, String? nameCity) {
     final p = findProvince(nameProvince);
     if (p == null) return null;
     final c = p.children.firstWhereOrNull((a) => a.name == nameCity);
-    return c as City;
+    // return c as City;
+    return (c == null) ? null : (c as City);
   }
 
   County? findCounty(
@@ -116,7 +117,8 @@ class Nation extends Area {
     final city = findCity(nameProvince, nameCity);
     if (city == null) return null;
     final c = city.children.firstWhereOrNull((a) => a.name == nameCounty);
-    return c as County;
+    // return c as County;
+    return (c == null) ? null : (c as County);
   }
 }
 

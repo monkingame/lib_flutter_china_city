@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'area_analyzer.dart';
+import 'area_selected.dart';
 import 'selector_area.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -32,7 +33,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('test'),
             ),
           ),
-          const SelectorArea(),
+          SelectorArea(
+            onNewArea: (AreaSelected newArea) async {
+              print(newArea);
+            },
+          ),
         ],
       ),
     );
