@@ -71,13 +71,15 @@ abstract class Area {
   Area? parent;
 
   @override
-  String toString() {
-    if (children.isNotEmpty) {
-      return '$code:$name $children';
-    } else {
-      return '$code:$name';
-    }
-  }
+  String toString() => '$code:$name';
+
+  // String toFullString() {
+  //   if (children.isNotEmpty) {
+  //     return '$code:$name $children';
+  //   } else {
+  //     return '$code:$name';
+  //   }
+  // }
 }
 
 enum _AreaType { nation, province, city, county }

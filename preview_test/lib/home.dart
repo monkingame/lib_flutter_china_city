@@ -19,8 +19,11 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () async {
             // print(chinaCities);
             final nation = AreaAnalyzer.analyzeNation();
-            print(nation);
+            // print(nation);
             // print(nation.children);
+            final provinces = nation.allProvinces.values.toList();
+            provinces.sort((a, b) => a.value.compareTo(b.value));
+            print(provinces);
           },
           child: const Text('test'),
         ),
