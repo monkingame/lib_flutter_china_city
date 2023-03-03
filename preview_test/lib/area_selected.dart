@@ -1,7 +1,9 @@
 import 'area.dart';
 
 class AreaSelected {
-  Area? province;
-  Area? city;
-  Area? county;
+  final Area? province;
+  final Area? city;
+  final Area? county;
+
+  AreaSelected({this.province, this.city, this.county});
 }

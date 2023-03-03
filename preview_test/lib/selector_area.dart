@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'area_analyzer.dart';
+import 'area_selected.dart';
 
-typedef OnNewStatus = void Function(String? newString);
+typedef OnNewArea = void Function(AreaSelected newString);
 
 /// 行业类型
 class SelectorArea extends StatefulWidget {
-  final String? initString;
-  final OnNewStatus? onNewString;
+  final String? topAreaName;
+  final OnNewArea? onNewArea;
 
-  const SelectorArea({super.key, this.initString, this.onNewString});
+  const SelectorArea({super.key, this.topAreaName, this.onNewArea});
 
   @override
   State<SelectorArea> createState() => _SelectorAreaState();
@@ -83,8 +84,7 @@ class _SelectorAreaState extends State<SelectorArea> {
           }
         });
 
-        // final onChange = widget.onNewString;
-        // if (onChange != null) onChange(value);
+        _doChange();
       },
     );
 
@@ -118,8 +118,7 @@ class _SelectorAreaState extends State<SelectorArea> {
           }
         });
 
-        // final onChange = widget.onNewString;
-        // if (onChange != null) onChange(value);
+        _doChange();
       },
     );
 
@@ -142,11 +141,23 @@ class _SelectorAreaState extends State<SelectorArea> {
           _countyName = value;
         });
 
-        // final onChange = widget.onNewString;
-        // if (onChange != null) onChange(value);
+        _doChange();
       },
     );
 
     return DropdownButtonHideUnderline(child: dropdown);
+  }
+
+  void _doChange() {
+    final onChange = widget.onNewArea;
+    if (onChange == null) return;
+
+    final selected = AreaSelected(
+      province: nation.findProvince(_provinceName),
+      city: nation.findCity(_provinceName, _cityName),
+      county: nation.findCounty(_provinceName, _cityName, _countyName),
+    );
+
+    onChange(selected);
   }
 }

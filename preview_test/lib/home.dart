@@ -27,12 +27,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 // print(nation.children);
                 final provinces = nation.allProvinces.values.toList();
                 provinces.sort((a, b) => a.value.compareTo(b.value));
-                print(provinces);
+                // print(provinces);
               },
               child: const Text('test'),
             ),
           ),
-          SelectorArea(),
+          const SelectorArea(),
         ],
       ),
     );
