@@ -1,11 +1,11 @@
 import 'area.dart';
 
-class AreaSelected {
+class AreaResult {
   final Area? province;
   final Area? city;
   final Area? county;
 
-  AreaSelected({this.province, this.city, this.county});
+  AreaResult({this.province, this.city, this.county});
 
   @override
   String toString() => '$province - $city - $county';
