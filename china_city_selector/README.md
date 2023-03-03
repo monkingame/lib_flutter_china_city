@@ -2,7 +2,7 @@
 China cities selector
 
 ## Features
-中国城市选择
+China cities selector / 中国城市选择
 
 
 ```
