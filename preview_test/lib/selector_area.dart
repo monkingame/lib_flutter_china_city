@@ -22,12 +22,9 @@ class _SelectorAreaState extends State<SelectorArea> {
   List<String> _cityNames = [];
   List<String> _countyNames = [];
 
-  // String? _industry;
   String? _provinceName;
   String? _cityName;
   String? _countyName;
-
-  // List<String?> get _industryValues => [null, ..._industries];
 
   List<String?> get _provinceDropNames => [null, ..._provinceNames];
   List<String?> get _cityDropNames => [null, ..._cityNames];
@@ -78,8 +75,6 @@ class _SelectorAreaState extends State<SelectorArea> {
           _provinceName = value;
 
           if (_provinceName != null) {
-            // print(_provinceName);
-            // final province = nation.allProvinces[_provinceName];
             final province = nation.findByName(_provinceName);
             if (province != null) {
               final cities = province.children;
@@ -87,8 +82,6 @@ class _SelectorAreaState extends State<SelectorArea> {
             }
           }
         });
-
-        // print(_cityNames);
 
         // final onChange = widget.onNewString;
         // if (onChange != null) onChange(value);
@@ -157,35 +150,3 @@ class _SelectorAreaState extends State<SelectorArea> {
     return DropdownButtonHideUnderline(child: dropdown);
   }
 }
-
-// const _industries = [
-//   '国有企业',
-//   '省委市委',
-//   '纪委',
-//   '政法',
-//   '发改委',
-//   '教育',
-//   '科学技术',
-//   '工业和信息化',
-//   '公安',
-//   '交警',
-//   '高速交警',
-//   '民政',
-//   '司法',
-//   '税务',
-//   '人力资源和社会保障',
-//   '国土海洋',
-//   '生态环境',
-//   '住建',
-//   '交通运输',
-//   '水利水务',
-//   '农业农村',
-//   '文化和旅游',
-//   '卫生健康',
-//   '应急管理',
-//   '审计',
-//   '国资委',
-//   '市场监督管理局',
-//   '大数据局',
-//   '其他',
-// ];
