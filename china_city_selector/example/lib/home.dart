@@ -1,6 +1,7 @@
+import 'package:china_city_selector/area_analyzer.dart';
+import 'package:china_city_selector/area_result.dart';
+import 'package:china_city_selector/selector_area.dart';
 import 'package:flutter/material.dart';
-
-import 'city_util.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -14,14 +15,32 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('china cities')),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () async {
-            // print(chinaCities);
-            CityUtil.analyze();
-          },
-          child: const Text('test'),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Center(
+            child: OutlinedButton(
+              onPressed: () async {
+                // print(chinaCities);
+                final nation = AreaAnalyzer.analyzeNation();
+                // print(nation);
+                // print(nation.children);
+                final provinces = nation.allProvinces.values.toList();
+                provinces.sort((a, b) => a.value.compareTo(b.value));
+                // print(provinces);
+              },
+              child: const Text('test'),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: SelectorArea(
+              onNewArea: (AreaResult newArea) async {
+                print(newArea);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
