@@ -71,8 +71,8 @@ class _SelectorAreaState extends State<SelectorArea> {
       onChanged: (value) async {
         setState(() {
           _cityName = null;
-          _countyName = null;
           _cityNames = [];
+          _countyName = null;
           _countyNames = [];
 
           _provinceName = value;
@@ -85,11 +85,6 @@ class _SelectorAreaState extends State<SelectorArea> {
               final cities = province.children;
               _cityNames = cities.map((c) => c.name).toList();
             }
-          } else {
-            _cityName = null;
-            _countyName = null;
-            _cityNames = [];
-            _countyNames = [];
           }
         });
 
@@ -116,12 +111,17 @@ class _SelectorAreaState extends State<SelectorArea> {
           .toList(),
       onChanged: (value) async {
         setState(() {
+          _countyName = null;
+          _countyNames = [];
+
           _cityName = value;
 
           if (_cityName != null) {
-          } else {
-            _countyName = null;
-            _countyNames = [];
+            final city = nation.findByName(_cityName);
+            if (city != null) {
+              final counties = city.children;
+              _countyNames = counties.map((c) => c.name).toList();
+            }
           }
         });
 
