@@ -1,1 +1,0 @@
-library china_city_selector;

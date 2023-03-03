@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+library china_city_selector;
 
+import 'package:flutter/material.dart';
 import 'area_analyzer.dart';
 import 'area_result.dart';
 
