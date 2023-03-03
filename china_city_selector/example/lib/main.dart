@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:china_city_selector/area_analyzer.dart';
 import 'package:china_city_selector/area_result.dart';
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 final nation = AreaAnalyzer.analyzeNation();
                 final provinces = nation.allProvinces.values.toList();
                 provinces.sort((a, b) => a.value.compareTo(b.value));
-                // print(provinces);
+                print(provinces);
               },
               child: const Text('print all provinces'),
             ),
