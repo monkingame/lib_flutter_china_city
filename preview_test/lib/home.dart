@@ -33,8 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('test'),
             ),
           ),
-          SizedBox(
-            width: 600,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: SelectorArea(
               onNewArea: (AreaResult newArea) async {
                 print(newArea);
