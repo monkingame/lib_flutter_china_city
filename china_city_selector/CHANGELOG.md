@@ -3,3 +3,7 @@
 
 ## 1.1.1
 * example
+
+## 1.1.2
+* AreaResult toString
+* 
