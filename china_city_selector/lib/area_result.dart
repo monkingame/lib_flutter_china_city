@@ -3,6 +3,7 @@ import 'dart:math';
 import 'area.dart';
 import 'area_analyzer.dart';
 
+/// area result
 class AreaResult {
   final Area? province;
   final Area? city;
@@ -28,6 +29,7 @@ class AreaResult {
     }
   }
 
+  /// got random AreaResult
   static AreaResult random() {
     Area? province;
     Area? city;

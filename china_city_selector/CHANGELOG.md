@@ -6,4 +6,6 @@
 
 ## 1.1.2
 * AreaResult toString
-* 
+
+## 1.1.3
+* random area

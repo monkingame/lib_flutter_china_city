@@ -1,6 +1,6 @@
 name: china_city_selector
-description: china city selector
-version: 1.1.2
+description: china city selector, use three dropdown(province,city,county), or generate random area.
+version: 1.1.3
 homepage: https://github.com/monkingame/lib_flutter_china_city
 
 environment:

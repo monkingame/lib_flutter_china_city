@@ -6,7 +6,7 @@ import 'area_result.dart';
 
 typedef OnNewArea = void Function(AreaResult newArea);
 
-/// 行业类型
+/// selector area
 class SelectorArea extends StatefulWidget {
   final String? topAreaName;
   final OnNewArea? onNewArea;

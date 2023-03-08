@@ -1,6 +1,7 @@
 import 'area.dart';
 import 'map_china_areas.dart';
 
+/// area analyzer
 abstract class AreaAnalyzer {
   AreaAnalyzer._();
 

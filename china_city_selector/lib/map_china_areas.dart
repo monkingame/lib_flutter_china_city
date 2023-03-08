@@ -1,3 +1,4 @@
+/// All China areas: province,city,county
 const Map<String, String> mapChinaAreas = {
   '110000': '北京市',
   '110101': '东城区',

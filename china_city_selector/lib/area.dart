@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-/// 地区类
+/// Area
 abstract class Area {
   final String code;
   final String name;
@@ -58,8 +58,10 @@ abstract class Area {
   String toString() => '$code:$name';
 }
 
+/// area type
 enum _AreaType { nation, province, city, county }
 
+/// Nation
 class Nation extends Area {
   Nation() : super(code: '000000', name: '全国');
 
@@ -95,14 +97,17 @@ class Nation extends Area {
   }
 }
 
+/// Province
 class Province extends Area {
   Province({required super.code, required super.name});
 }
 
+/// City
 class City extends Area {
   City({required super.code, required super.name});
 }
 
+/// County
 class County extends Area {
   County({required super.code, required super.name});
 }
