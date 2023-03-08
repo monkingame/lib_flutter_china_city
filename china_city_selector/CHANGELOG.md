@@ -12,3 +12,6 @@
 
 ## 1.1.7
 * documentation
+
+## 1.1.8
+* license
