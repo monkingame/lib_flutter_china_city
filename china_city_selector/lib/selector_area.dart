@@ -111,7 +111,8 @@ class _SelectorAreaState extends State<SelectorArea> {
           _cityName = value;
 
           if (_cityName != null) {
-            final city = nation.findByName(_cityName);
+            // final city = nation.findByName(_cityName);
+            final city = nation.findCity(_provinceName, _cityName);
             if (city != null) {
               final counties = city.children;
               _countyNames = counties.map((c) => c.name).toList();

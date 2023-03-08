@@ -22,21 +22,13 @@ abstract class Area {
     }
   }
 
-  // int get codeValue => int.parse(code);
   int get value => _value;
 
-  // abstract List<Area> children;
   final List<Area> children = [];
 
   void add(Area child) => children.add(child);
 
   void sort() => children.sort(((a, b) => a.value.compareTo(b.value)));
-
-  // @Deprecated('用静态函数isNationCode')
-  // bool get isNation => codeValue == 0;
-  // bool get isProvince => codeValue % 10000 == 0;
-  // bool get isCity => !isProvince && (codeValue % 100 == 0);
-  // bool get isCounty => codeValue % 100 != 0;
 
   static bool isNationCode(int value) => value == 0;
   static bool isProvinceCode(int value) => value % 10000 == 0;
@@ -50,16 +42,6 @@ abstract class Area {
   bool get isCounty => _type == _AreaType.county;
 
   int get parentValue {
-    // if (isNation) return 0;
-    // if (isProvince) return 0;
-    // if (isCity) return ((codeValue / 10000) as int) * 10000;
-    // if (isCounty) return ((codeValue / 100) as int) * 100;
-
-    // if (isNationCode(codeValue)) return 0;
-    // if (isProvinceCode(codeValue)) return 0;
-    // if (isCityCode(codeValue)) return (codeValue ~/ 10000) * 10000;
-    // if (isCountyCode(codeValue)) return (codeValue ~/ 100) * 100;
-
     if (isNation) return 0;
     if (isProvince) return 0;
     if (isCity) return (value ~/ 10000) * 10000;
@@ -74,14 +56,6 @@ abstract class Area {
 
   @override
   String toString() => '$code:$name';
-
-  // String toFullString() {
-  //   if (children.isNotEmpty) {
-  //     return '$code:$name $children';
-  //   } else {
-  //     return '$code:$name';
-  //   }
-  // }
 }
 
 enum _AreaType { nation, province, city, county }
@@ -117,7 +91,6 @@ class Nation extends Area {
     final city = findCity(nameProvince, nameCity);
     if (city == null) return null;
     final c = city.children.firstWhereOrNull((a) => a.name == nameCounty);
-    // return c as County;
     return (c == null) ? null : (c as County);
   }
 }
