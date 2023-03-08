@@ -12,6 +12,8 @@ class AreaResult {
 
   AreaResult({this.province, this.city, this.county, this.hyphen = '-'});
 
+  /// province - city - county
+  /// default hypen is '-'
   @override
   String toString() {
     if (province == null) {

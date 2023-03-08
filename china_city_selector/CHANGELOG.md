@@ -9,3 +9,6 @@
 
 ## 1.1.3
 * random area
+* 
+## 1.1.6
+* documentation

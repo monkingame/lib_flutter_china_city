@@ -8,6 +8,8 @@ abstract class Area {
   int _value = 0;
   _AreaType _type = _AreaType.nation;
 
+  /// code: area code
+  /// https://www.mca.gov.cn/article/sj/xzqh/2020/20201201.html
   Area({required this.code, required this.name}) {
     if (code.length == 6) {
       final v = int.tryParse(code);
@@ -41,6 +43,7 @@ abstract class Area {
   bool get isCity => _type == _AreaType.city;
   bool get isCounty => _type == _AreaType.county;
 
+  /// get parent area value
   int get parentValue {
     if (isNation) return 0;
     if (isProvince) return 0;
@@ -70,16 +73,19 @@ class Nation extends Area {
   late final Map<String, Area> allCities;
   late final Map<String, Area> allCounties;
 
+  /// find area by name,maybe area names are same
   Area? findByName(String? name) {
     final area = allAreas.values.firstWhereOrNull((a) => a.name == name);
     return area;
   }
 
+  /// find province by name
   Province? findProvince(String? nameProvince) {
     final p = children.firstWhereOrNull((a) => a.name == nameProvince);
     return (p == null) ? null : (p as Province);
   }
 
+  /// find city by province and city
   City? findCity(String? nameProvince, String? nameCity) {
     final p = findProvince(nameProvince);
     if (p == null) return null;
@@ -88,6 +94,7 @@ class Nation extends Area {
     return (c == null) ? null : (c as City);
   }
 
+  /// find count by province and city and county names
   County? findCounty(
       String? nameProvince, String? nameCity, String? nameCounty) {
     final city = findCity(nameProvince, nameCity);

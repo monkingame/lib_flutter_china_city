@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'area_analyzer.dart';
 import 'area_result.dart';
 
+/// when area selected
 typedef OnNewArea = void Function(AreaResult newArea);
 
 /// selector area
 class SelectorArea extends StatefulWidget {
+  /// top area name(NOT implement yet)
+  /// move the area to selector top
   final String? topAreaName;
   final OnNewArea? onNewArea;
 

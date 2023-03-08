@@ -5,6 +5,7 @@ import 'map_china_areas.dart';
 abstract class AreaAnalyzer {
   AreaAnalyzer._();
 
+  /// analyze nation from map const
   static Nation analyzeNation() {
     final nation = Nation();
     final Map<String, Area> allAreas = {};
